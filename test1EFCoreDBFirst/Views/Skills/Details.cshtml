@@ -1,0 +1,52 @@
+﻿@model test1EFCoreDBFirst.Models.Skill
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Skill</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+
+    <div class="container">
+        <div class="row">
+            <span><h5>Employees with this skill</h5></span>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Phone Number</th>
+                        <th>Years of Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in ViewBag.employees)
+                    {
+                        <tr>
+                            <td>@employee.EmployeeName</td>
+                            <td>@employee.PhoneNumber</td>
+                            <td>@employee.YearsExperience</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SkillID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
